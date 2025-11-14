@@ -155,6 +155,69 @@ Se a distância lida for menor que 30 cm (significando que um objeto está bloqu
 
 Essa detecção (variável carroEsperando = true) é o gatilho que autoriza o Semáforo 2 a ficar verde no próximo ciclo. Se nenhum carro for detectado (carroEsperando = false), o Semáforo 2 é "pulado" para economizar tempo, mantendo o fluxo na via principal.
 
+---
+### Explicação do código em POO
+
+As Classes 
+
+Primeiro, criamos as classes do nosso projeto. No meu caso, um semáforo e um sensor.
+
+class Semaforo { ... };
+
+Isso é a classe de um semáforo.
+
+O que ele tem (Atributos): A classe diz que todo semáforo precisa guardar o número dos seus pinos (pinVermelho, pinAmarelo, pinVerde).
+
+O que ele sabe fazer (Métodos): A classe diz que todo semáforo sabe .verde(), .amarelo() e .vermelho(). A lógica de quais pinos ligar ou desligar está dentro dele.
+
+class SensorUltrassonico { ... };
+
+Isso é a classe de um sensor.
+
+O que ele tem: Os pinos pinTrig e pinEcho.
+
+O que ele sabe fazer: Ele sabe .lerDistancia(). A fórmula de cálculo está dentro dele.
+
+2. Os Objetos 
+
+Agora que temos as classes, podemos construir os objetos reais no início do código:
+
+C++
+Semaforo s1(S1_VERMELHO, S1_VERDE);
+Semaforo s2(S2_VERMELHO, S2_AMARELO, S2_VERDE);
+SensorUltrassonico sensor(PINO_TRIG, PINO_ECHO);
+s1: É um objeto Semáforo. Nós o criamos usando a planta Semaforo e dissemos a ele para usar os pinos 9 e 10. (Ele é esperto e sabe que, se só tem 2 pinos, o "amarelo" dele é ligando os dois).
+
+s2: É outro objeto Semáforo. Criamos com a mesma planta, mas dissemos para usar os pinos 5, 4 e 3.
+
+sensor: É o objeto sensor, criado a partir da planta SensorUltrassonico.
+
+Agora você tem três "peças" com "cérebro próprio".
+
+3. O loop() (Dando as Ordens)
+
+O loop() fica muito mais limpo. Em vez de fazer o trabalho sujo, ele agora só dá ordens para os objetos:
+
+Em vez de: controlarSemaforo1('V');
+
+Você diz: s1.verde(); (Que é como dizer: "Objeto s1, faça a sua mágica de ficar verde.")
+
+Em vez de: distancia = lerDistancia();
+
+Você diz: dist = sensor.lerDistancia(); (Que é como dizer: "Objeto sensor, me diga qual é a distância agora.")
+
+Resumo da Vantagem
+
+O loop() não precisa saber como um semáforo fica verde (quais pinos ligar/desligar). Ele só dá a ordem. Toda a responsabilidade e a lógica estão guardadas dentro do objeto s1.
+
+Isso torna o código:
+
+Mais organizado: Cada classe cuida da sua própria lógica.
+
+Mais legível: O loop() lê como uma lista de comandos simples.
+
+Reutilizável: Se você quisesse 10 semáforos, era só criar s3, s4, etc.
+
 <br>
 <div align="center">
 <sub>Projeto</sub>
