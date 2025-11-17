@@ -231,16 +231,18 @@ Reutilizável: Se você quisesse 10 semáforos, era só criar s3, s4, etc.
 </div>
 <br>
 
+<br>
+<div align="center">
+<sub>Monitoramento Serial do Sensor</sub>
+</div>
+<br>
+<div align="center">
+<img width=100% height=100% alt="VGND" src="Fotos/Videos/Screenshot 2025-11-13 at 8.39.31 PM.png"/>
+</div>
+<br>
+<div align="center">
+</div>
+<br>
+<br>
 
-<br>
-<div align="center">
-<sub>Projeto</sub>
-</div>
-<br>
-<div align="center">
-<img width=100% height=100% alt="VGND" src="Fotos/Videos/Fotos/Videos/WhatsApp Video 2025-11-13 at 8.39.32 PM.mp4"/>
-</div>
-<br>
-<div align="center">
-</div>
-<br>
+***Vídeo do projeto funcionando dentro da pasta "Fotos/Vídeos"***
